@@ -1,19 +1,13 @@
-# AMP Example
+# PeerPiper.io
 
-This directory is a brief example of a [AMP](https://amp.dev/) site that can be deployed to ZEIT Now with zero configuration.
+PeerPiper is mecentralizing the internet.
 
-## How we created this example
+## How we do it
 
-To get started with AMP on Now, you can use the [Now CLI](https://zeit.co/download) to initialize the project:
+It all starts with a little self sovreign identity, sprinkle in a little peer-to-peer data sharing,
+layer on some helpful apps, and voila! An internet centralized around YOU. 
 
-```shell
-$ now init amp
-```
+## Deployed with Dat
 
-## Deploying this Example
+Everyone is talking about IPFS, but I really like Dat. Because the Dat URL doesn't change when you update the content like IPFS.
 
-You can deploy the AMP example with just a single command:
-
-```shell
-$ now
-```
