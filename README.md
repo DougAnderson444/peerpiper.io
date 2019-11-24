@@ -4,7 +4,7 @@ This is the website repo for PeerPiper.io, where we are is mecentralizing the in
 
 ## Nextjs
 
-This projetc uses Nextjs and Zeit Now because it's ultra easy for development 
+This project uses Nextjs and Zeit Now because it's ultra easy for development 
 and one-click deployment to zeit.co
 
 ## Design considerations
