@@ -23,7 +23,7 @@ const Home = () => (
       <div className="row">
         <a href="create" className="card">
           <h3>Create Portfolio &rarr;</h3>
-          <p>Free forver, No signup required.</p>
+          <p>Free forever, No signup required.</p>
         </a>
         <a href="learn" className="card">
           <h3>Learn &rarr;</h3>

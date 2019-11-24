@@ -1,13 +1,14 @@
 # PeerPiper.io
 
-PeerPiper is mecentralizing the internet.
+This is the website repo for PeerPiper.io, where we are is mecentralizing the internet.
 
-## How we do it
+## Nextjs
 
-It all starts with a little self sovreign identity, sprinkle in a little peer-to-peer data sharing,
-layer on some helpful apps, and voila! An internet centralized around YOU. 
+This projetc uses Nextjs and Zeit Now because it's ultra easy for development 
+and one-click deployment to zeit.co
 
-## Deployed with Dat
+## Design considerations
 
-Everyone is talking about IPFS, but I really like Dat. Because the Dat URL doesn't change when you update the content like IPFS.
+For the app proof of concept, we wanted frictionless signup and easy sharing, all done in the browser.
+
 
