@@ -13,7 +13,7 @@ const Home = () => (
 
     <div className="hero">
       <center>
-        <img width="150" height="150" layout="fixed" class="logo" src="P.png"></img>
+        <img width="150" height="150" layout="fixed" className="logo" src="P.png"></img>
       </center>
       <h1 className="title">PeerPiper.io</h1>
       <p className="description">
@@ -26,14 +26,21 @@ const Home = () => (
           <p>Free forever, No signup required.</p>
         </a>
         <a href="learn" className="card">
-          <h3>Learn &rarr;</h3>
-          <p>Learn about PeerPiper</p>
+          <h3>Where your Peers At &rarr;</h3>
+          <p>Connect, coordinate, collaborate</p>
         </a>
         <a href="examples" className="card">
           <h3>Examples &rarr;</h3>
-          <p>See what you can do with your Portfolio</p>
+          <p>See what you can do with your Peerfolio</p>
         </a>
       </div>
+    </div>
+    <div>
+      <h2 className="description">Leaderboard</h2>
+      <p className="description">
+        See the peers and the top organizations connected to you. 
+      </p>
+
     </div>
 
     <style jsx>{`
@@ -53,6 +60,13 @@ const Home = () => (
       .title,
       .description {
         text-align: center;
+      }
+      .col {
+        max-width: 880px;
+        margin: 80px auto 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
       }
       .row {
         max-width: 880px;
