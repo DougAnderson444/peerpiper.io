@@ -5,46 +5,48 @@ import Nav from '../components/nav'
 const Home = () => (
   <div>
     <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="favicon.ico" />
+      <title>PeerPiper.io</title>
     </Head>
 
     <Nav />
 
     <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
+      <center>
+        <img width="150" height="150" layout="fixed" class="logo" src="P.png"></img>
+      </center>
+      <h1 className="title">PeerPiper.io</h1>
       <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
+        Mecentralizing the internet. 
       </p>
 
       <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
+        <a href="create" className="card">
+          <h3>Create Portfolio &rarr;</h3>
+          <p>Free forver, No signup required.</p>
         </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
+        <a href="learn" className="card">
+          <h3>Learn &rarr;</h3>
+          <p>Learn about PeerPiper</p>
         </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
+        <a href="examples" className="card">
           <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
+          <p>See what you can do with your Portfolio</p>
         </a>
       </div>
     </div>
 
     <style jsx>{`
       .hero {
+        margin: 3rem 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        color: #525252;
         width: 100%;
-        color: #333;
       }
       .title {
         margin: 0;
         width: 100%;
-        padding-top: 80px;
+        padding-top: 20px;
         line-height: 1.15;
         font-size: 48px;
       }
@@ -64,15 +66,15 @@ const Home = () => (
         width: 220px;
         text-align: left;
         text-decoration: none;
-        color: #434343;
+        color: #32ba46;
         border: 1px solid #9b9b9b;
       }
       .card:hover {
-        border-color: #067df7;
+        border-color: #32ba46;
       }
       .card h3 {
         margin: 0;
-        color: #067df7;
+        color: #32ba46;
         font-size: 18px;
       }
       .card p {
