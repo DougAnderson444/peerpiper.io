@@ -1,9 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
-import Rimp from 'rimp'
 
-import Users from './api/users'
 
 const Home = () => (
   <div>
@@ -20,40 +18,23 @@ const Home = () => (
       </center>
       <h1 className="title">PeerPiper.io</h1>
       <p className="description">
-        Mecentralizing the internet. 
-      </p>
-      <p>
-        Get notified when it's ready for release:
-        <br></br>
-      <Rimp
-        buttonValue={`submit`}
-        buttonStyles={`btn`}
-        containerStyles={`newsletter__form`}
-        completeMessage={`Thanks, we'll send you an email to confirm!`}
-        mailChimpUrl="//url.us10.list-manage.com/subscribe/post?u=user&amp;id=list"
-      />
+      Smart hiring solution for the 21st Century 
       </p>
       <div className="row">
-        <a href="create" className="card">
-          <h3>Create Portfolio &rarr;</h3>
-          <p>Free forever, No signup required.</p>
+      <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
+          <h3>Get Notified &rarr;</h3>
+          <p>Be a first mover (opens a new window for you).</p>
         </a>
-        <a href="learn" className="card">
-          <h3>Where your Peers At &rarr;</h3>
-          <p>Connect, coordinate, collaborate</p>
-        </a>
-        <a href="examples" className="card">
-          <h3>Examples &rarr;</h3>
-          <p>See what you can do with your Peerfolio</p>
-        </a>
-      </div>
+        </div>
     </div>
     <div>
-      <h2 className="description">Leaderboard</h2>
-      <p className="description">
-        See the peers and the top organizations connected to you. 
-      </p>
+      <center>
 
+      <h2>Coming soon:</h2>
+      <p className="description">
+      Smart hiring solution for the 21st Century 
+      </p>
+      </center>
     </div>
 
     <style jsx>{`
@@ -62,6 +43,9 @@ const Home = () => (
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         color: #525252;
         width: 100%;
+      }
+      h2 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
       }
       .title {
         margin: 0;
@@ -73,6 +57,8 @@ const Home = () => (
       .title,
       .description {
         text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
       }
       .col {
         max-width: 880px;
