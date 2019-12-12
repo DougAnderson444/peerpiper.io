@@ -1,6 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
+import Rimp from 'rimp'
+
+import Users from './api/users'
 
 const Home = () => (
   <div>
@@ -19,7 +22,17 @@ const Home = () => (
       <p className="description">
         Mecentralizing the internet. 
       </p>
-
+      <p>
+        Get notified when it's ready for release:
+        <br></br>
+      <Rimp
+        buttonValue={`submit`}
+        buttonStyles={`btn`}
+        containerStyles={`newsletter__form`}
+        completeMessage={`Thanks, we'll send you an email to confirm!`}
+        mailChimpUrl="//url.us10.list-manage.com/subscribe/post?u=user&amp;id=list"
+      />
+      </p>
       <div className="row">
         <a href="create" className="card">
           <h3>Create Portfolio &rarr;</h3>
