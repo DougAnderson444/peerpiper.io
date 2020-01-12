@@ -18,14 +18,28 @@ const Home = () => (
       </center>
       <h1 className="title">PeerPiper.io</h1>
       <p className="description">
-      Smart hiring solution for the 21st Century 
+      Your ultimate personal data sink. Save once, pipe out to your contacts. 
       </p>
       <div className="row">
-      <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
-          <h3>Get Notified &rarr;</h3>
-          <p>Be a first mover (opens a new window for you).</p>
-        </a>
+        <div className="col">
+          <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
+            <h3>PeePiper Ployment &rarr;</h3>
+            <p>Stream out your resume, including instant updates for your new skills.</p>
+          </a>
         </div>
+        <div className="col">
+          <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
+            <h3>PeePiper Pad &rarr;</h3>
+            <p>Stream out your address, never miss mail again.</p>
+          </a>
+        </div>
+        <div className="col">
+          <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
+            <h3>PeePiper Pulse &rarr;</h3>
+            <p>Stream out your availability, never miss a meeting again.</p>
+          </a>
+        </div>
+      </div>
     </div>
     <div>
       <center>
