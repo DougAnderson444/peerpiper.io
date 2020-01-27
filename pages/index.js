@@ -18,13 +18,13 @@ const Home = () => (
       </center>
       <h1 className="title">PeerPiper.io</h1>
       <p className="description">
-      Your ultimate personal data sink. Save once, pipe out to your contacts. 
+      Your ultimate personal data sink. Save once, pipe out to your selected audience. 
       </p>
       <div className="row">
         <div className="col">
           <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
-            <h3>PeePiper Ployment &rarr;</h3>
-            <p>Stream out your resume, including instant updates for your new skills.</p>
+            <h3>PeePiper Portfolio &rarr;</h3>
+            <p>Verify all the experience in your resume.</p>
           </a>
         </div>
         <div className="col">
