@@ -2,6 +2,28 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 
+const Iota = require('@iota/core');
+
+// Create a new instance of the IOTA API object
+// Use the `provider` field to specify which node to connect to
+const iota = Iota.composeAPI({
+  provider: 'https://nodes.devnet.iota.org:443'
+  });
+
+async function constShowInfo() {
+
+  // Call the `getNodeInfo()` method for information about the node and the Tangle
+  try {  
+    const nodeInfo = await iota.getNodeInfo()
+    const constShowInfo = JSON.stringify(await nodeInfo, null, 1)
+    return constShowInfo
+  }catch (e) {
+    return e;
+  }
+    
+}
+const info = constShowInfo()
+
 
 const Home = () => (
   <div>
@@ -18,24 +40,24 @@ const Home = () => (
       </center>
       <h1 className="title">PeerPiper.io</h1>
       <p className="description">
-      Your ultimate personal data sink. Save once, pipe out to your selected audience. 
+      Your ultimate personal data sink. Save once, pipe out to your selected peer groups. 
       </p>
       <div className="row">
         <div className="col">
           <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
-            <h3>PeePiper Portfolio &rarr;</h3>
-            <p>Verify all the experience in your resume.</p>
+            <h3>PeerPiper Portfolio &rarr;</h3>
+            <p>Verify all your resume experience, skills, personality, anything really.</p>
           </a>
         </div>
         <div className="col">
           <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
-            <h3>PeePiper Pad &rarr;</h3>
+            <h3>PeerPiper Pad &rarr;</h3>
             <p>Stream out your address, never miss mail again.</p>
           </a>
         </div>
         <div className="col">
           <a href="https://mailchi.mp/fa2bf49dfc8b/peerpiper" target="_blank" className="card">
-            <h3>PeePiper Pulse &rarr;</h3>
+            <h3>PeerPiper Pulse &rarr;</h3>
             <p>Stream out your availability, never miss a meeting again.</p>
           </a>
         </div>
@@ -44,9 +66,9 @@ const Home = () => (
     <div>
       <center>
 
-      <h2>Coming soon:</h2>
+      <h2>Try it out:</h2>
       <p className="description">
-      Smart hiring solution for the 21st Century 
+      Coming soon... {info}
       </p>
       </center>
     </div>
