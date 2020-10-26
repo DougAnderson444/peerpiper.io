@@ -1,6 +1,5 @@
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 
@@ -31,9 +30,10 @@ export default {
 	input: 'src/main.js',
 	output: {
 		sourcemap: true,
-		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		format: 'es',
+		dir: 'public/build',
+        chunkFileNames: '[name].js'
 	},
 	plugins: [
 		svelte({
@@ -44,18 +44,12 @@ export default {
 			css: css => {
 				css.write('bundle.css');
 			}
-		}),
-
-		// If you have external dependencies installed from
-		// npm, you'll most likely need these plugins. In
-		// some cases you'll need additional configuration -
-		// consult the documentation for details:
-		// https://github.com/rollup/plugins/tree/master/packages/commonjs
-		resolve({
-			browser: true,
-			dedupe: ['svelte']
-		}),
-		commonjs(),
+		}),		
+		nodeResolve({
+				browser: true,
+				dedupe: ['svelte'],
+				preferBuiltins: false
+		}),	
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
