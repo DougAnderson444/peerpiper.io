@@ -8,7 +8,7 @@
     "vercel-dev": "vercel dev"
   },
   "dependencies": {
-    "hypns-svelte-component": "github:DougAnderson444/HyPNS-Svelte-Component",
+    "hypns-svelte-component": "^2.1.2",
     "sirv-cli": "^1.0.0"
   },
   "devDependencies": {
