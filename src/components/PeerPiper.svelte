@@ -1,6 +1,6 @@
 <script>
   import { onMount, onDestroy } from "svelte";
-  import HyPNS from "HyPNS-Svelte-Component";
+  import HyPNS from "hypns-svelte-component";
   import Splash from "./Splash.svelte";
   import Data from "./EditData.svelte";
 
