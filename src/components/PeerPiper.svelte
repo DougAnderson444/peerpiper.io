@@ -24,7 +24,7 @@
   $: mounted && hypnsNode ? open() : null;
 </script>
 
-<div>Welcome to PeerPiper</div>
+<div><p>Welcome to PeerPiper</p></div>
 <HyPNS bind:hypnsNode />
 <!-- <button
   on:click|preventDefault={() => {
@@ -33,6 +33,5 @@
   Back to Splash page
 </button> -->
 {#if ready}
-  <p>Opened!</p>
   <Data {myInstance} {hypnsNode} />
 {/if}
