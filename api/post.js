@@ -1,5 +1,5 @@
 const fetch = require("node-fetch"); // to make fetch work in nodejs
-// const fetch = require('@vercel/fetch-retry')(require('node-fetch'))
+// const fetch = require('@vercel/fetch-retry')(require('node-fetch')) // vercel's version of same
 
 module.exports = async (req, res) => {
 
