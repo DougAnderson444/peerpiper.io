@@ -14,8 +14,7 @@ module.exports = async (req, res) => {
         body: JSON.stringify(req.body), // body data type must match "Content-Type" header
     });
     
-    const r = await response.json()
+    const r = await response.json() // parses JSON response into native JavaScript objects
     console.log(` response.json: `, r)
-    return res.json(r) // await response.json(); // parses JSON response into native JavaScript objects
-
+    res.status(200).json(r) 
 }
