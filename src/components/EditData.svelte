@@ -1,6 +1,7 @@
 <script>
     import { onMount, onDestroy } from "svelte";
-
+    import QRCode from "./QRCode.svelte";
+    
     // bound to parent component, which means the value gets passed from upstream
     export var myInstance;
     export let hypnsNode;
@@ -69,6 +70,7 @@
     <br />
     {myInstance.publicKey}
     <br />
+    <QRCode value={myInstance.publicKey} />
     <button on:click|preventDefault={postIt}>
         Post to Super-peer Server
     </button>
