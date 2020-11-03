@@ -53,7 +53,8 @@
         });
         console.log("POST Response: ", res);
         if (res.ok) {
-            console.log("Posted to superpeer");
+            const r = await res.json()
+            console.log("Posted to superpeer", r);
             return true;
         } else {
             console.log("[FAIL] NOT posted to super peer");
