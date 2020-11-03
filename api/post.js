@@ -16,6 +16,6 @@ module.exports = async (req, res) => {
     
     const r = await response.json()
     console.log(` response.json: `, r)
-    return r // await response.json(); // parses JSON response into native JavaScript objects
+    return res.json(r) // await response.json(); // parses JSON response into native JavaScript objects
 
 }
