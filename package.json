@@ -1,6 +1,6 @@
 {
   "name": "peerpiper",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
@@ -11,6 +11,7 @@
     "@vercel/fetch-retry": "^5.0.3",
     "hypns-svelte-component": "^2.1.2",
     "node-fetch": "^2.6.1",
+    "qrcode": "^1.4.4",
     "sirv-cli": "^1.0.0"
   },
   "devDependencies": {
