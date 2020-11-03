@@ -17,7 +17,7 @@
     const getInstance = async (publicKey) => {
         const inst = await hypnsNode.open({ keypair: { publicKey } }); // works with or without a PublicKey
         await inst.ready();
-        return inst
+        return inst;
     };
 
     function setupInstance(nameInstance) {
@@ -41,6 +41,26 @@
         });
         newFaveColor = "";
     }
+    const postIt = async () => {
+        const body = {
+            rootKey: myInstance.publicKey,
+        };
+
+        const res = await fetch("/api/post", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+        });
+        console.log("POST Response: ", res);
+        if (res.ok) {
+            console.log("Posted to superpeer");
+            return true;
+        } else {
+            console.log("[FAIL] NOT posted to super peer");
+            return false;
+        }
+    };
+
 </script>
 
 <div>
@@ -48,6 +68,9 @@
     <br />
     {myInstance.publicKey}
     <br />
+    <button on:click|preventDefault={postIt}>
+        Post to Super-peer Server
+    </button>
     <hr />
     <div>
         <form class="form" on:submit|preventDefault={handleUpdate}>
