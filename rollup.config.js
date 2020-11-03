@@ -3,6 +3,8 @@ import svelte from 'rollup-plugin-svelte';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 
+import commonjs from '@rollup/plugin-commonjs'
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -50,7 +52,7 @@ export default {
 				dedupe: ['svelte'],
 				preferBuiltins: false
 		}),	
-
+		commonjs(),
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
 		!production && serve(),
