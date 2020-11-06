@@ -1,7 +1,7 @@
 <script>
     import { onMount, onDestroy } from "svelte";
     import QRCode from "./QRCode.svelte";
-    
+
     // bound to parent component, which means the value gets passed from upstream
     export var myInstance;
     export let hypnsNode;
@@ -10,15 +10,17 @@
     let contacts = [];
     let recent = "";
     let newFaveColor = "";
-    let lastEntry = ""
+    let lastEntry = "";
 
-    onMount(async() => {
+    onMount(async () => {
         try {
-            await fetch('http://geut-webrtc-signal-v3.herokuapp.com/') // wake it up in advance            
-        } catch (error) {
-        }
+            await fetch("http://geut-webrtc-signal-v3.herokuapp.com/", {
+                method: "GET",
+                mode: "no-cors",
+            }); // wake it up in advance
+        } catch (error) {}
         setupInstance(myInstance);
-        if(!(await postIt())) setTimeout((await postIt()), 10000)
+        if (!(await postIt()) && !!lastEntry) setTimeout(await postIt(), 10000);
     });
 
     const getInstance = async (publicKey) => {
@@ -44,7 +46,7 @@
 
     function handleUpdate() {
         myInstance.publish({ text: newFaveColor });
-        lastEntry = newFaveColor
+        lastEntry = newFaveColor;
         newFaveColor = "";
     }
 
@@ -60,15 +62,14 @@
         });
         console.log("POST Response: ", res);
         if (res.ok) {
-            const r = await res.json()
-            console.log("Posted to superpeer", r.latest.text);
-            return r.latest.text === lastEntry
+            const r = await res.json();
+            console.log("Response from superpeer", r.latest);
+            return r.latest && (r.latest.text === lastEntry);
         } else {
             console.log("[FAIL] NOT posted to super peer");
             return false;
         }
     };
-
 </script>
 
 <div>
