@@ -10,9 +10,12 @@
     let contacts = [];
     let recent = "";
     let newFaveColor = "";
+    let lastEntry = ""
 
-    onMount(() => {
+    onMount(async() => {
+        await fetch('http://geut-webrtc-signal-v3.herokuapp.com/') // wake it up in advance
         setupInstance(myInstance);
+        if(!await postIt()) setTimeout(await postIt(), 10000)
     });
 
     const getInstance = async (publicKey) => {
@@ -37,11 +40,11 @@
     };
 
     function handleUpdate() {
-        const ret = myInstance.publish({
-            text: "My favorite color is now " + newFaveColor,
-        });
+        myInstance.publish({ text: newFaveColor });
+        lastEntry = newFaveColor
         newFaveColor = "";
     }
+
     const postIt = async () => {
         const body = {
             rootKey: myInstance.publicKey,
@@ -55,8 +58,8 @@
         console.log("POST Response: ", res);
         if (res.ok) {
             const r = await res.json()
-            console.log("Posted to superpeer", r);
-            return true;
+            console.log("Posted to superpeer", r.latest.text);
+            return r.latest.text === lastEntry
         } else {
             console.log("[FAIL] NOT posted to super peer");
             return false;
@@ -71,9 +74,6 @@
     {myInstance.publicKey}
     <br />
     <QRCode value={myInstance.publicKey} />
-    <button on:click|preventDefault={postIt}>
-        Post to Super-peer Server
-    </button>
     <hr />
     <div>
         <form class="form" on:submit|preventDefault={handleUpdate}>
