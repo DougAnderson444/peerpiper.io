@@ -13,7 +13,10 @@
     let lastEntry = ""
 
     onMount(async() => {
-        await fetch('http://geut-webrtc-signal-v3.herokuapp.com/') // wake it up in advance
+        try {
+            await fetch('http://geut-webrtc-signal-v3.herokuapp.com/') // wake it up in advance            
+        } catch (error) {
+        }
         setupInstance(myInstance);
         if(!(await postIt())) setTimeout((await postIt()), 10000)
     });
