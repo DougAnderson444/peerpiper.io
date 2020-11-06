@@ -27,7 +27,7 @@
   on:mouseover={() => {
     showQR();
   }}>
-  [QR Code]
+  [Hover to show QR Code]
 </span>
 <br />
 

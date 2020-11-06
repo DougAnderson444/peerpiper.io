@@ -77,6 +77,7 @@
     <br />
     {myInstance.publicKey}
     <br />
+    <br />
     <QRCode value={myInstance.publicKey} />
     <hr />
     <div>
