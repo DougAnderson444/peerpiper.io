@@ -15,7 +15,7 @@
     onMount(async() => {
         await fetch('http://geut-webrtc-signal-v3.herokuapp.com/') // wake it up in advance
         setupInstance(myInstance);
-        if(!await postIt()) setTimeout(await postIt(), 10000)
+        if(!(await postIt())) setTimeout((await postIt()), 10000)
     });
 
     const getInstance = async (publicKey) => {
