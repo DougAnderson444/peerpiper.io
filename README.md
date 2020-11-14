@@ -3,6 +3,8 @@
 ---
 
 # svelte app
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FDougAnderson444%2Fpeerpiper.io.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FDougAnderson444%2Fpeerpiper.io?ref=badge_shield)
+
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
 
@@ -103,3 +105,7 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FDougAnderson444%2Fpeerpiper.io.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FDougAnderson444%2Fpeerpiper.io?ref=badge_large)
