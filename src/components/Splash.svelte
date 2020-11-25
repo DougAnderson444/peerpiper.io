@@ -2,7 +2,6 @@
   export let active;
 
   document.title = "You've Discovered PeerPiper";
-
 </script>
 
 <style>
@@ -48,24 +47,17 @@
   </center>
   <h1 class="title">You've discovered PeerPiper.io</h1>
   <p class="description">
-    We're designing your ultimate personal data sink. Save once, pipe out to your peers.
+    We're designing your ultimate personal data sink. Save once, pipe out to
+    your peers.
   </p>
-  <!-- <button
+  <br />
+  <button
     on:click|preventDefault={() => {
-      import('./Hypns.svelte').then(module => {
+      import('./PeerPiper.svelte').then((module) => {
         active = module.default;
       });
     }}>
-    Load Peerpiper/HyPNS
-  </button> -->
-<br/>
-  <button
-  on:click|preventDefault={() => {
-    import('./PeerPiper.svelte').then(module => {
-      active = module.default;
-    });
-  }}>
-  Launch <br/>Alpha Prototype
-</button>
-
+    Launch
+    <br />Alpha Prototype
+  </button>
 </div>

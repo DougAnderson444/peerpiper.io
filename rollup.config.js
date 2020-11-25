@@ -2,8 +2,12 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
-
+import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs'
+// import nodePolyfills from 'rollup-plugin-node-polyfills';
+import nodeGlobals from 'rollup-plugin-node-globals'
+import builtins from 'rollup-plugin-node-builtins';
+import babel from '@rollup/plugin-babel';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -38,6 +42,12 @@ export default {
         chunkFileNames: '[name].js'
 	},
 	plugins: [
+		nodeResolve({
+				browser: true,
+				dedupe: ['svelte'],
+				preferBuiltins: false
+		}),
+		json(),
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,
@@ -46,13 +56,31 @@ export default {
 			css: css => {
 				css.write('bundle.css');
 			}
-		}),		
-		nodeResolve({
-				browser: true,
-				dedupe: ['svelte'],
-				preferBuiltins: false
 		}),	
-		commonjs(),
+		babel({
+			babelHelpers: 'bundled',
+			presets: [
+				['@babel/preset-env', { targets: { node: "current" } }]
+			], 
+			plugins: [
+                ["@babel/plugin-proposal-private-methods"],
+                ["@babel/plugin-proposal-class-properties"]
+            ]
+			// plugins: ["@babel/plugin-transform-runtime"], babelHelpers: 'runtime',
+			// plugins: babelConfig.env.browser.plugins,
+		}),
+		commonjs({
+			include: [/node_modules/],
+			// dynamicRequireTargets: [
+			// 	// include using a glob pattern (either a string or an array of strings)
+			// 	'node_modules/lodash.js',
+			// 	'node_modules/lodash.merge/*'
+			// ],
+			requireReturnsDefault: "auto" // what is returned when requiring an ES module from a CommonJS file
+		}),
+		nodeGlobals(), // after commonjs, before builtins
+		// nodePolyfills(),
+		builtins(),
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
 		!production && serve(),

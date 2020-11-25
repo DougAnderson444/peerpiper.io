@@ -24,24 +24,37 @@
     });
 
     const getInstance = async (publicKey) => {
-        const inst = await hypnsNode.open({ keypair: { publicKey } }); // works with or without a PublicKey
-        await inst.ready();
-        return inst;
+        try {
+            const inst = await hypnsNode.open({ keypair: { publicKey } }); // works with or without a PublicKey
+            await inst.ready();
+            return inst;
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     function setupInstance(nameInstance) {
+        const showLatest = (val) => {
+            if (nameInstance.latest) {
+                console.log("latest", nameInstance.latest.text);
+                recent += `<br/>${nameInstance.publicKey}: ${nameInstance.latest.text}`;
+            }
+        };
+
         contacts = [...contacts, nameInstance];
-        nameInstance.on("update", (val) => {
-            console.log("latest", nameInstance.latest.text);
-            recent += `<br/>${nameInstance.publicKey}: ${nameInstance.latest.text}`;
-        });
+        showLatest(nameInstance.latest);
+        nameInstance.on("update", showLatest);
     }
 
     const handleSubmit = async () => {
         console.log("handleSubmit", publicKey);
-        const newFriend = await getInstance(publicKey);
-        setupInstance(newFriend);
-        publicKey = "";
+        try {
+            const newFriend = await getInstance(publicKey);
+            setupInstance(newFriend);
+            publicKey = "";
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     function handleUpdate() {
@@ -64,7 +77,7 @@
         if (res.ok) {
             const r = await res.json();
             console.log("Response from superpeer", r.latest);
-            return r.latest && (r.latest.text === lastEntry);
+            return r.latest && r.latest.text === lastEntry;
         } else {
             console.log("[FAIL] NOT posted to super peer");
             return false;
@@ -93,6 +106,9 @@
             Paste you're friend's publicKey below:
             <br />
             <input type="text" bind:value={publicKey} />
+            <br />
+            {publicKey}
+            <br />
         </form>
     </div>
     <hr />
