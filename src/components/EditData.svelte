@@ -21,6 +21,12 @@
         } catch (error) {}
         setupInstance(myInstance);
         if (!(await postIt()) && !!lastEntry) setTimeout(await postIt(), 10000);
+
+        // postIt().then((res) => {
+        //     console.log("2. Last Entry is:", lastEntry);
+        //     console.log("POST Res is:", res);
+        //     if (!!lastEntry && !res) setTimeout(postIt(), 10000);
+        // });
     });
 
     const getInstance = async (publicKey) => {
@@ -36,7 +42,8 @@
     function setupInstance(nameInstance) {
         const showLatest = (val) => {
             if (nameInstance.latest) {
-                console.log("latest", nameInstance.latest.text);
+                lastEntry = nameInstance.latest.text;
+                console.log("showLatest ", nameInstance.latest.text);
                 recent += `<br/>${nameInstance.publicKey}: ${nameInstance.latest.text}`;
             }
         };
@@ -68,11 +75,15 @@
             rootKey: myInstance.publicKey,
         };
 
-        const res = await fetch("/api/post", {
+        const data = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
-        });
+        };
+
+        console.log(`Sending`, data);
+
+        const res = await fetch("/api/post", data);
         console.log("POST Response: ", res);
         if (res.ok) {
             const r = await res.json();
