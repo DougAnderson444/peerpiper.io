@@ -25,6 +25,10 @@ For production, a community build [vercel-sapper](https://github.com/thgh/vercel
 }
 ```
 
+### Package.json
+
+Dependencies are located in devDepencies so when this project is pushed to Vercel the size is kept small as devDependencies aren't included in the limited bundle size of Now.
+
 ## Getting started
 
 TODO

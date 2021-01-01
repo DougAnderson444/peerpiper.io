@@ -1,7 +1,7 @@
 {
   "name": "peerpiper",
   "description": "PeerPiper.io. Decentralizing the internet.",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "scripts": {
     "vercel:dev": "vercel dev",
     "dev": "sapper dev",
@@ -12,13 +12,13 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
-    "hypns-svelte-component": "^2.5.7",
-    "ipfs-core": "^0.3.1",
     "polka": "next",
-    "qrcode": "^1.4.4",
     "sirv": "^1.0.0"
   },
   "devDependencies": {
+    "hypns-svelte-component": "^2.5.7",
+    "ipfs-core": "^0.3.1",
+    "qrcode": "^1.4.4",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "file-loader": "^6.0.0",
