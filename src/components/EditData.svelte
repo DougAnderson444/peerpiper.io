@@ -1,10 +1,9 @@
 <script>
-    import { onMount, onDestroy } from "svelte";
+    import { onMount } from "svelte";
     import QRCode from "./QRCode.svelte";
 
-    // bound to parent component, which means the value gets passed from upstream
-    export var myInstance;
-    export let hypnsNode;
+    // stores
+    import { hypnsNode, myInstance } from "../js/stores.js";
 
     let publicKey;
     let contacts = [];
@@ -19,8 +18,8 @@
                 mode: "no-cors",
             }); // wake it up in advance
         } catch (error) {}
-        setupInstance(myInstance);
-        if (!(await postIt()) && !!lastEntry) setTimeout(await postIt(), 10000);
+        setupInstance($myInstance);
+        if (!(await postIt()) && !!lastEntry) setTimeout(await postIt(), 90000);
 
         // postIt().then((res) => {
         //     console.log("2. Last Entry is:", lastEntry);
@@ -31,7 +30,7 @@
 
     const getInstance = async (publicKey) => {
         try {
-            const inst = await hypnsNode.open({ keypair: { publicKey } }); // works with or without a PublicKey
+            const inst = await $hypnsNode.open({ keypair: { publicKey } }); // works with or without a PublicKey
             await inst.ready();
             return inst;
         } catch (error) {
@@ -53,8 +52,8 @@
         nameInstance.on("update", showLatest);
     }
 
-    const handleSubmit = async () => {
-        console.log("handleSubmit", publicKey);
+    const addPublicKey = async () => {
+        console.log("addPublicKey", publicKey);
         try {
             const newFriend = await getInstance(publicKey);
             setupInstance(newFriend);
@@ -65,14 +64,14 @@
     };
 
     function handleUpdate() {
-        myInstance.publish({ text: newFaveColor });
+        $myInstance.publish({ text: newFaveColor });
         lastEntry = newFaveColor;
         newFaveColor = "";
     }
 
     const postIt = async () => {
         const body = {
-            rootKey: myInstance.publicKey,
+            rootKey: $myInstance.publicKey,
         };
 
         const data = {
@@ -81,10 +80,8 @@
             body: JSON.stringify(body),
         };
 
-        console.log(`Sending`, data);
-
         const res = await fetch("/api/post", data);
-        console.log("POST Response: ", res);
+
         if (res.ok) {
             const r = await res.json();
             console.log("Response from superpeer", r.latest);
@@ -99,10 +96,10 @@
 <div>
     Your PublicKey:
     <br />
-    {myInstance.publicKey}
+    {$myInstance.publicKey}
     <br />
     <br />
-    <QRCode value={myInstance.publicKey} />
+    <QRCode value={$myInstance.publicKey} />
     <hr />
     <div>
         <form class="form" on:submit|preventDefault={handleUpdate}>
@@ -113,7 +110,7 @@
     </div>
     <hr />
     <div>
-        <form class="form" on:submit|preventDefault={handleSubmit}>
+        <form class="form" on:submit|preventDefault={addPublicKey}>
             Paste you're friend's publicKey below:
             <br />
             <input type="text" bind:value={publicKey} />
