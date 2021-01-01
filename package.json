@@ -1,11 +1,11 @@
 {
   "name": "peerpiper",
   "description": "PeerPiper.io. Decentralizing the internet.",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "scripts": {
     "vercel:dev": "vercel dev",
     "dev": "sapper dev",
-    "build": "sapper build",
+    "build": "sapper export",
     "export": "sapper export",
     "start:ci": "VERCEL_ORG_ID=$VERCEL_ORG_ID VERCEL_PROJECT_ID=$VERCEL_PROJECT_ID vercel dev --listen 3000 --token $VERCEL_TOKEN --confirm ",
     "start": "node __sapper__/build"
