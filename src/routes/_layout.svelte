@@ -22,4 +22,4 @@
 	<slot />
 </main>
 <HyPNSManager />
-<!-- <IPFSManager /> -->
+<IPFSManager />

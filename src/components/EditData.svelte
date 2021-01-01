@@ -5,7 +5,7 @@
     // stores
     import { hypnsNode, myInstance } from "../js/stores.js";
 
-    let publicKey;
+    let publicKey = "";
     let contacts = [];
     let recent = "";
     let newFaveColor = "";
@@ -13,7 +13,7 @@
 
     onMount(async () => {
         try {
-            await fetch("http://geut-webrtc-signal-v3.herokuapp.com/", {
+            await fetch("https://geut-webrtc-signal-v3.herokuapp.com/", {
                 method: "GET",
                 mode: "no-cors",
             }); // wake it up in advance
@@ -94,10 +94,6 @@
 </script>
 
 <div>
-    Your PublicKey:
-    <br />
-    {$myInstance.publicKey}
-    <br />
     <br />
     <QRCode value={$myInstance.publicKey} />
     <hr />
