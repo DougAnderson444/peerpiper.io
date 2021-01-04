@@ -1,6 +1,12 @@
 # PeerPiper.io
 
-A [Sapper](https://github.com/sveltejs/sapper)-based, [Vercel]-deployed project running [HyPNS](https://github.com/DougAnderson444/HyPNS) via [HyPNS-Svelte-Component](https://github.com/DougAnderson444/HyPNS-Svelte-Component) and [IPFS Core](https://www.npmjs.com/package/ipfs-core).
+<p align="center">
+![Alt text](PeerPiper Logo)<br/><img src="https://raw.githubusercontent.com/DougAnderson444/peerpiper.io/master/static/apple-icon-114x114.png">
+<br/>
+PeerPiper.io - Instantly update your connections using HyPNS.
+</p>
+
+A [Sapper](https://github.com/sveltejs/sapper)-based, [Vercel](https://vercel.com/)-deployed project running [HyPNS](https://github.com/DougAnderson444/HyPNS) via [HyPNS-Svelte-Component](https://github.com/DougAnderson444/HyPNS-Svelte-Component) and [IPFS Core](https://www.npmjs.com/package/ipfs-core).
 
 ## Dev Notes
 
@@ -11,18 +17,8 @@ This project uses vercel functions, for the vercel now functon to work, run
 vercel:dev
 ```
 
-For production, a community build [vercel-sapper](https://github.com/thgh/vercel-sapper) is used, so ```vercel.prod.json``` needs to replace the dev version of ```vercel.json``` since [it adds](https://github.com/thgh/vercel-sapper#options):
+For production, it's deployed to Vercel now.
 
-```json
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "vercel-sapper"
-    }
-  ]
-}
 ```
 
 ### Package.json
