@@ -3,7 +3,7 @@
   "theme_color": "#46C23D",
   "name": "PeerPiper",
   "short_name": "PeerPiper",
-  "description": "Automatically update your connections",
+  "description": "Instantly update your connections",
   "display": "minimal-ui",
   "start_url": "/",
   "icons": [
