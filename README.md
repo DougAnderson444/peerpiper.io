@@ -3,8 +3,11 @@
 <p align="center">
 <img src="https://raw.githubusercontent.com/DougAnderson444/peerpiper.io/master/static/apple-icon-114x114.png">
 <br/>
-PeerPiper.io - Instantly update your connections using HyPNS.
+**PeerPiper.io - Instantly update your connections using HyPNS.**
+<br/>
 </p>
+
+## HyPNS & IPFS Convenience
 
 A [Sapper](https://github.com/sveltejs/sapper)-based, [Vercel](https://vercel.com/)-deployed project running [HyPNS](https://github.com/DougAnderson444/HyPNS) via [HyPNS-Svelte-Component](https://github.com/DougAnderson444/HyPNS-Svelte-Component) and [IPFS Core](https://www.npmjs.com/package/ipfs-core).
 
@@ -19,19 +22,13 @@ vercel:dev
 
 For production, it's deployed to Vercel now.
 
-```
-
 ### Package.json
 
 Dependencies are located in devDepencies so when this project is pushed to Vercel the size is kept small as devDependencies aren't included in the limited bundle size of Now.
 
 ## Getting started
 
-TODO
-
-### Using PeerPiper
-
-TODO
+TODO: There will be a way to register on peerpiper to use it as a convenience wrapper for HyPNS
 
 ## Bugs and feedback
 
