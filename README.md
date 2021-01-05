@@ -3,7 +3,7 @@
 <p align="center">
 <img src="https://raw.githubusercontent.com/DougAnderson444/peerpiper.io/master/static/apple-icon-114x114.png">
 <br/>
-**PeerPiper.io - Instantly update your connections using HyPNS.**
+<b>PeerPiper.io - Instantly update your connections using HyPNS.</b>
 <br/>
 </p>
 
