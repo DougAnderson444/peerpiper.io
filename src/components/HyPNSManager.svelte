@@ -1,5 +1,8 @@
 <script>
   import { onMount } from "svelte";
+
+  import ObjectComp from "./ObjectComp.svelte";
+
   //stores
   import {
     hypnsNode, // bound to HyPNS component, will get its value from there
@@ -18,6 +21,9 @@
 
   let mounted;
   let ready;
+  let handshake = "";
+  let streamProcessed = "No";
+  let connections = "0";
 
   onMount(() => {
     import(/* webpackChunkName: "hypns-comp" */ "hypns-svelte-component").then(
@@ -48,11 +54,45 @@
       })
     );
 
+    $hypnsNode.network.networker.on("handshake", () => (handshake = true));
+    $hypnsNode.network.networker.on("peer-add", (peer) => {
+      console.log(`Peer added`, peer);
+    });
+    $hypnsNode.network.networker.swarm.on("connection", () => connections++);
+    $hypnsNode.network.networker.on(
+      "stream-processed",
+      () => (streamProcessed = $hypnsNode.network.networker_streamsProcessed)
+    );
+
     ready = true;
   };
 </script>
 
+<style>
+  .status {
+    font-size: small;
+    padding: 1em;
+    border: lightgreen 0.01em solid;
+    margin: 1em;
+  }
+</style>
+
 {#if HyPNSComponent}
   <svelte:component this={HyPNSComponent} bind:hypnsNode={$hypnsNode} {opts} />
 {/if}
-{#if $myInstance}<br /> myInstance.publicKey {$myInstance.publicKey}{/if}
+{#if $myInstance}
+  <div class="status">
+    HyPNS PublicKey
+    {$myInstance.publicKey}
+    <br />Noise PublicKey:
+    {$hypnsNode.swarmNetworker.keyPair.publicKey.toString('hex')}
+    <br />Handshake:
+    {handshake}
+    <br />Stream Processed:
+    {streamProcessed}
+    <br />Swarm Connections:
+    {connections}
+    <ObjectComp val={$hypnsNode.network.networker.peers} key="Peers" />
+    <ObjectComp val={$hypnsNode.network.networker.streams} key="Streams" />
+  </div>
+{/if}

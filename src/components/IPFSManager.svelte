@@ -25,8 +25,20 @@
     };
 </script>
 
-{#if ipfsNode}<br />IPFS-core created{/if}
+<style>
+    .status {
+        font-size: small;
+        padding: 1em;
+        border: rgb(187, 177, 151) 0.01em solid;
+        margin: 1em;
+    }
+</style>
+
 {#if ipfsNode}
-    <br />NodeId:
-    {#await nodeId then nodeId}{nodeId}{/await}
+    <div class="status">
+        <b>IPFS-core created</b>
+        <br />NodeId:
+
+        {#await nodeId then nodeId}{nodeId}{/await}
+    </div>
 {/if}
