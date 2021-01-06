@@ -1,7 +1,7 @@
 {
   "name": "peerpiper",
   "description": "PeerPiper.io. Decentralizing the internet.",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "scripts": {
     "vercel:dev": "vercel dev",
     "dev": "sapper dev",
@@ -18,7 +18,7 @@
   "devDependencies": {
     "electron": "^11.1.1",
     "file-loader": "^6.0.0",
-    "hypns-svelte-component": "^2.6.2",
+    "hypns-svelte-component": "^2.6.3",
     "ipfs-core": "^0.3.1",
     "qrcode": "^1.4.4",
     "sapper": "^0.28.10",
