@@ -13,8 +13,8 @@
    * 3. An instance of the node (a keypair linked to the node)
    */
   let HyPNSComponent;
-  let wsProxy = ["wss://super.peerpiper.io:4977"];
-  let opts = { persist: true, swarmOpts: { wsProxy } }; // save the hypnsNode data to the browser
+  // let wsProxy = ["wss://hyperswarm.mauve.moe"]; // "wss://super.peerpiper.io:4977",
+  let opts = { persist: true }; // , swarmOpts: { wsProxy } // save the hypnsNode data to the browser
 
   let mounted;
   let ready;
