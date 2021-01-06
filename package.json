@@ -1,7 +1,7 @@
 {
   "name": "peerpiper",
   "description": "PeerPiper.io. Decentralizing the internet.",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "scripts": {
     "vercel:dev": "vercel dev",
     "dev": "sapper dev",
