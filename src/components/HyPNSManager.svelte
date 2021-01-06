@@ -61,7 +61,7 @@
     $hypnsNode.network.networker.swarm.on("connection", () => connections++);
     $hypnsNode.network.networker.on(
       "stream-processed",
-      () => (streamProcessed = $hypnsNode.network.networker_streamsProcessed)
+      () => (streamProcessed = $hypnsNode.network.networker._streamsProcessed)
     );
 
     ready = true;
