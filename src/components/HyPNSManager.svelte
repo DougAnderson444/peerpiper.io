@@ -20,10 +20,10 @@
   let opts = { persist: true }; // , swarmOpts: { wsProxy } // save the hypnsNode data to the browser
 
   let mounted;
-  let ready;
-  let handshake = "";
+  let handshake = "--";
   let streamProcessed = "No";
   let connections = "0";
+  let peers = 0;
 
   onMount(() => {
     import(/* webpackChunkName: "hypns-comp" */ "hypns-svelte-component").then(
@@ -56,21 +56,18 @@
 
     $hypnsNode.network.networker.on("handshake", () => (handshake = true));
     $hypnsNode.network.networker.on("peer-add", (peer) => {
-      console.log(`Peer added`, peer);
+      console.log(`Peer added`, peer.remotePublicKey.toString("hex"));
     });
-    $hypnsNode.network.networker.swarm.on("connection", () => connections++);
-    $hypnsNode.network.networker.on(
-      "stream-processed",
-      () => (streamProcessed = $hypnsNode.network.networker._streamsProcessed)
-    );
-
-    ready = true;
+    $hypnsNode.network.networker.swarm.on("connection", () => {
+      // peers = $hypnsNode.swarmNetworker.swarm.peers;
+      connections++;
+    });
   };
 </script>
 
 <style>
   .status {
-    font-size: small;
+    font-size: smaller;
     padding: 1em;
     border: lightgreen 0.01em solid;
     margin: 1em;
@@ -88,11 +85,7 @@
     {$hypnsNode.swarmNetworker.keyPair.publicKey.toString('hex')}
     <br />Handshake:
     {handshake}
-    <br />Stream Processed:
-    {streamProcessed}
     <br />Swarm Connections:
     {connections}
-    <ObjectComp val={$hypnsNode.network.networker.peers} key="Peers" />
-    <ObjectComp val={$hypnsNode.network.networker.streams} key="Streams" />
   </div>
 {/if}

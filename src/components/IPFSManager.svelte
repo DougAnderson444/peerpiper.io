@@ -20,14 +20,13 @@
     const open = async () => {
         ipfsNode = await IPFS.create();
         const { cid } = await ipfsNode.add("Hello world");
-        console.info(cid);
         nodeId = (await ipfsNode.id()).id;
     };
 </script>
 
 <style>
     .status {
-        font-size: small;
+        font-size: smaller;
         padding: 1em;
         border: rgb(187, 177, 151) 0.01em solid;
         margin: 1em;
@@ -36,7 +35,7 @@
 
 {#if ipfsNode}
     <div class="status">
-        <b>IPFS-core created</b>
+        <b>IPFS loaded</b>
         <br />NodeId:
 
         {#await nodeId then nodeId}{nodeId}{/await}
