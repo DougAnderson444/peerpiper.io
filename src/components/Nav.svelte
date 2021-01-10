@@ -82,11 +82,11 @@
 					title="Homepage"
 					style="background-image:url(p.svg)">Home</a>
 			</li>
-			<li>
+			<!-- <li>
 				<a
 					aria-current={segment === 'app' ? 'page' : undefined}
 					href="http://app.{host}">app</a>
-			</li>
+			</li> -->
 			<li>
 				<a
 					rel="prefetch"

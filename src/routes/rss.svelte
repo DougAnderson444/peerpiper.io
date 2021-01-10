@@ -1,15 +1,25 @@
 <script context="module">
-    export async function preload(page, session) {
-        // const res = await this.fetch(`api/getRssFeed`);
-        const res = await this.fetch(`./api/getRssFeed`);
-        const feed = await res.json();
+    // export async function preload(page, session) {
+    //     // const res = await this.fetch(`api/getRssFeed`);
+    //     const res = await this.fetch("api/getRssFeed.js", {
+    //         method: "GET",
+    //     });
+    //     const feed = await res.json();
 
-        return { feed };
-    }
+    //     return { feed };
+    // }
 </script>
 
 <script>
+    import { onMount } from "svelte";
     export let feed;
+
+    onMount(async () => {
+        const res = await fetch("api/getRssFeed", {
+            method: "GET",
+        });
+        feed = await res.json();
+    });
 </script>
 
 <style>
