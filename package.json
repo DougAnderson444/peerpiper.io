@@ -1,7 +1,7 @@
 {
   "name": "peerpiper",
   "description": "PeerPiper.io. Decentralizing the internet.",
-  "version": "4.0.7",
+  "version": "4.0.8",
   "scripts": {
     "vercel:dev": "vercel dev",
     "dev": "sapper dev",
@@ -13,6 +13,7 @@
   "dependencies": {
     "compression": "^1.7.1",
     "polka": "next",
+    "rss-parser": "^3.10.0",
     "sirv": "^1.0.0"
   },
   "devDependencies": {
