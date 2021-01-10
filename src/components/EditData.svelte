@@ -1,3 +1,17 @@
+<script context="module">
+    export async function preload(page, session) {
+        // wake WebRTC signalling server up in advance
+        try {
+            this.fetch("https://geut-webrtc-signal-v3.herokuapp.com/", {
+                method: "GET",
+                mode: "no-cors",
+            });
+        } catch (error) {}
+
+        return;
+    }
+</script>
+
 <script>
     import { onMount } from "svelte";
     import QRCode from "./QRCode.svelte";
@@ -11,22 +25,15 @@
     let newFaveColor = "";
     let lastEntry = "";
 
-    onMount(async () => {
-        try {
-            await fetch("https://geut-webrtc-signal-v3.herokuapp.com/", {
-                method: "GET",
-                mode: "no-cors",
-            }); // wake it up in advance
-        } catch (error) {}
-        setupInstance($myInstance);
-        if (!(await postIt()) && !!lastEntry) setTimeout(await postIt(), 90000);
+    $: !!$myInstance ? init() : null;
 
-        // postIt().then((res) => {
-        //     console.log("2. Last Entry is:", lastEntry);
-        //     console.log("POST Res is:", res);
-        //     if (!!lastEntry && !res) setTimeout(postIt(), 10000);
-        // });
-    });
+    const init = async () => {
+        setupInstance($myInstance);
+        if (!(await postIt()) && !!lastEntry)
+            $myInstance.once("update", () => {
+                postIt();
+            });
+    };
 
     const getInstance = async (publicKey) => {
         try {
@@ -40,7 +47,7 @@
 
     function setupInstance(nameInstance) {
         const showLatest = (val) => {
-            if (nameInstance.latest) {
+            if (nameInstance.latest && nameInstance.latest.text) {
                 lastEntry = nameInstance.latest.text;
                 console.log("showLatest ", nameInstance.latest.text);
                 recent += `<br/>${nameInstance.publicKey}: ${nameInstance.latest.text}`;
@@ -99,15 +106,14 @@
     <hr />
     <div>
         <form class="form" on:submit|preventDefault={handleUpdate}>
-            Update your favorite color here:
+            Enter anything here to share with your connections:
             <br />
             <input type="text" bind:value={newFaveColor} />
         </form>
     </div>
-    <hr />
     <div>
         <form class="form" on:submit|preventDefault={addPublicKey}>
-            Paste you're friend's publicKey below:
+            Paste you're friend's publicKey below to follow updates:
             <br />
             <input type="text" bind:value={publicKey} />
             <br />
@@ -115,10 +121,8 @@
             <br />
         </form>
     </div>
-    <hr />
     <br />
-    <br />
-    <p>List of contacts:</p>
+    <p>List of your contacts:</p>
     <p>
         {#if contacts && contacts.length > 0}
             <ul>

@@ -4,9 +4,11 @@
   import Nav from "../components/Nav.svelte";
   import HyPNSManager from "../components/HyPNSManager.svelte";
   import IPFSManager from "../components/IPFSManager.svelte";
-  export let segment;
 
-  let subdomain = false;
+  import { subdomain } from "../js/stores.js";
+
+  let mounted;
+  export let segment;
 
   onMount(async () => {
     let isDev = window.location.hostname.includes("localhost");
@@ -16,8 +18,9 @@
       (!isDev && splitHost.length === 3) ||
       (isDev && splitHost.length === 2)
     ) {
-      subdomain = splitHost[0];
+      $subdomain = splitHost[0];
     }
+    mounted = true;
   });
 </script>
 
@@ -32,7 +35,7 @@
   }
 </style>
 
-{#if !subdomain}
+{#if mounted && !$subdomain}
   <Nav {segment} />
 {/if}
 
@@ -40,7 +43,7 @@
   <slot />
 </main>
 
-{#if subdomain}
+{#if mounted && $subdomain}
   <HyPNSManager />
   <IPFSManager />
 {/if}

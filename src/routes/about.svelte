@@ -9,3 +9,4 @@
 	control of your own data and your connections.
 </p>
 <p>Your data. Your way.</p>
+<p>We connect your data, not collect your data.</p>

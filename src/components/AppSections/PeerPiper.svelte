@@ -1,16 +1,7 @@
 <script>
-  import { onMount } from "svelte";
-
   // stores
   import { myInstance } from "../../js/stores.js";
   import EditData from "../EditData.svelte";
-  let date;
-
-  onMount(async () => {
-    const res = await fetch("/api/date");
-    const newDate = await res.text();
-    date = newDate;
-  });
 </script>
 
 <svelte:head>
@@ -23,6 +14,4 @@
   <br />
   <EditData />
   <br />
-  <h2>The date according to Node.js is:</h2>
-  <p>{date ? date : 'Loading date...'}</p>
 </div>
