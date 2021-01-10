@@ -2,6 +2,10 @@
 	<title>About</title>
 </svelte:head>
 
-<h1>About this site</h1>
+<h1>About PeerPiper.io</h1>
 
-<p>This is the 'about' page. There's not much here.</p>
+<p>
+	PeerPiper was created by Doug Anderson to give you an easy way to take
+	control of your own data and your connections.
+</p>
+<p>Your data. Your way.</p>
