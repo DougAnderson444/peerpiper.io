@@ -28,5 +28,6 @@
     "webpack": "^4.7.0",
     "webpack-modules": "^1.0.0"
   },
-  "repository": "github:DougAnderson444/peerpiper.io"
+  "repository": "github:DougAnderson444/peerpiper.io",
+  "license": "MIT-Commons-Clause"
 }
