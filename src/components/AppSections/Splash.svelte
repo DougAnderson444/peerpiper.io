@@ -1,7 +1,21 @@
 <script>
+  import { onMount } from "svelte";
+  import { goto } from '@sapper/app';
+
   import PGraphic from "../graphics/p.svelte";
   // stores
   import { appSection } from "../../js/stores.js";
+
+  let host = "localhost:3000";
+	onMount(async () => {
+		host = window.location.hostname;
+		host += window.location.hostname.includes("localhost") ? ":3000" : "";
+  });
+  
+  const loadApp = async () => {
+    await goto(`http://app.${host}`);
+  }
+
 </script>
 
 <style>
@@ -43,7 +57,7 @@
     your peers.
   </p>
   <br />
-  <button on:click|preventDefault={() => ($appSection = 'PeerPiper')}>
+  <button on:click|preventDefault={()=>(loadApp())}>
     Launch
     <br />Alpha Prototype
   </button>
