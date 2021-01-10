@@ -1,8 +1,8 @@
 <script context="module">
     export async function preload(page, session) {
-
-		const res = await this.fetch(`api/getRssFeed`);
-		const feed = await res.json();
+        // const res = await this.fetch(`api/getRssFeed`);
+        const res = await this.fetch(`./api/getRssFeed`);
+        const feed = await res.json();
 
         return { feed };
     }
