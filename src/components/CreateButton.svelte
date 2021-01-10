@@ -35,7 +35,6 @@
   {:else if searchState == 'NETWORK_ERROR'}
     ❌
   {:else}
-    <span class="arrow">→</span><br />
-    <span class="small">Load or Create New</span>
+    <span class="arrow">→</span>
   {/if}
 </button>
