@@ -5,5 +5,10 @@
       "source": "/([^/]+)",
       "destination": "/"
     }
-  ]
+  ],
+  "functions": {
+    "api/deno/*.[jt]s": {
+      "runtime": "vercel-deno@0.7.6"
+    }
+  }
 }
