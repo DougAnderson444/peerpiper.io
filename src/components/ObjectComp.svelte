@@ -9,6 +9,27 @@
   }
 </script>
 
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<div>
+  <span class:menuclosed={!expanded} on:click={toggle} />
+  <span class:expanded on:click={toggle}>{key}</span>
+  {#if expanded}
+    <ul>
+      {#each [...Object.entries(val).sort()] as [key, val]}
+        <li>
+          {#if typeof val === "object"}
+            <svelte:self {key} {val} breadcrumbs={breadcrumbs.concat(key)} />
+          {:else}{key != "value" ? key : ""}: {val}{/if}
+        </li>
+      {/each}
+    </ul>
+  {/if}
+</div>
+
 <style>
   span {
     background-size: 1em 1em;
@@ -45,23 +66,3 @@
     text-align: left;
   }
 </style>
-
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-<div>
-  <span class:menuclosed={!expanded} on:click={toggle} />
-  <span class:expanded on:click={toggle}>{key}</span>
-  {#if expanded}
-    <ul>
-      {#each [...Object.entries(val).sort()] as [key, val]}
-        <li>
-          {#if typeof val === 'object'}
-            <svelte:self {key} {val} breadcrumbs={breadcrumbs.concat(key)} />
-          {:else}{key != 'value' ? key : ''}: {val}{/if}
-        </li>
-      {/each}
-    </ul>
-  {/if}
-</div>

@@ -3,6 +3,7 @@ const parser = new Parser()
 const rssUrl = 'https://medium.com/feed/peerpiper'
 
 export async function get (req, res, next) {
+  console.log(`using sapper server routes`)
   try {
     const feed = await parser.parseURL(rssUrl)
     res.status(200).json(feed)

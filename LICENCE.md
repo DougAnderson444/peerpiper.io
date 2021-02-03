@@ -13,13 +13,13 @@ related to the Software), a product or service whose value derives, entirely or 
 from the functionality of the Software. Any license notice or attribution required by the 
 License must also include this Commons Clause License Condition notice.
 
-Software: HYPNS Super Peer
+Software: PeerPiper.io
 
 License: MIT
 
 Licensor: Douglas S Anderson
 
-Copyright (c) 2020 Doug S Anderson, All rights reserved.
+Copyright (c) 2021 Doug S Anderson, All rights reserved.
 
 MIT License with “Commons Clause”
 

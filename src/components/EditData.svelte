@@ -1,17 +1,3 @@
-<script context="module">
-    export async function preload(page, session) {
-        // wake WebRTC signalling server up in advance
-        try {
-            this.fetch("https://geut-webrtc-signal-v3.herokuapp.com/", {
-                method: "GET",
-                mode: "no-cors",
-            });
-        } catch (error) {}
-
-        return;
-    }
-</script>
-
 <script>
     import { onMount } from "svelte";
     import QRCode from "./QRCode.svelte";
@@ -26,6 +12,11 @@
     let lastEntry = "";
 
     $: !!$myInstance ? init() : null;
+
+    fetch("https://geut-webrtc-signal-v3.herokuapp.com/", {
+        method: "GET",
+        mode: "no-cors",
+    });
 
     const init = async () => {
         setupInstance($myInstance);
@@ -46,6 +37,7 @@
     };
 
     function setupInstance(nameInstance) {
+        console.log("Setting up", nameInstance.publicKey);
         const showLatest = (val) => {
             if (nameInstance.latest && nameInstance.latest.text) {
                 lastEntry = nameInstance.latest.text;
@@ -55,6 +47,7 @@
         };
 
         contacts = [...contacts, nameInstance];
+        console.log("Showing latest ", nameInstance.latest);
         showLatest(nameInstance.latest);
         nameInstance.on("update", showLatest);
     }
@@ -87,13 +80,18 @@
             body: JSON.stringify(body),
         };
 
-        const res = await fetch("/api/post", data);
-
-        if (res.ok) {
-            const r = await res.json();
-            console.log("Response from superpeer", r.latest);
-            return r.latest && r.latest.text === lastEntry;
-        } else {
+        try {
+            const res = await fetch("/api/post", data);
+            if (res.ok) {
+                const r = await res.json();
+                console.log("Response from superpeer", r.latest);
+                return r.latest && r.latest.text === lastEntry;
+            } else {
+                console.log("[FAIL] NOT posted to super peer");
+                return false;
+            }
+        } catch (error) {
+            console.log(erro);
             console.log("[FAIL] NOT posted to super peer");
             return false;
         }

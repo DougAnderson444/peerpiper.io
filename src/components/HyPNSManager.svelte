@@ -17,8 +17,14 @@
    */
   let HyPNSComponent;
   // let wsProxy = ["wss://hyperswarm.mauve.moe"]; // "wss://super.peerpiper.io:4977",
-  let opts = { persist: true }; // , swarmOpts: { wsProxy } // save the hypnsNode data to the browser
-
+  let wsProxy = [
+    "wss://super.peerpiper.io:49777",
+    "wss://hyperswarm.mauve.moe",
+  ];
+  let opts = {
+    persist: true,
+    swarmOpts: { announceLocalAddress: true, wsProxy },
+  };
   let mounted;
   let handshake = "--";
   let streamProcessed = "No";
@@ -42,8 +48,9 @@
     const existing = localStorage.getItem("keypair") || null;
     let keypair = existing ? JSON.parse(existing) : null;
     const opts = { keypair };
-    $myInstance = await $hypnsNode.open(opts); // open a new $myInstance
-    await $myInstance.ready();
+    const loadingInstance = await $hypnsNode.open(opts); // open a new $myInstance
+    await loadingInstance.ready();
+    $myInstance = loadingInstance;
     // store keypair for reload options
     // TODO: User password or 2FA option
     localStorage.setItem(
@@ -65,15 +72,6 @@
   };
 </script>
 
-<style>
-  .status {
-    font-size: smaller;
-    padding: 1em;
-    border: lightgreen 0.01em solid;
-    margin: 1em;
-  }
-</style>
-
 {#if HyPNSComponent}
   <svelte:component this={HyPNSComponent} bind:hypnsNode={$hypnsNode} {opts} />
 {/if}
@@ -82,10 +80,19 @@
     HyPNS PublicKey
     {$myInstance.publicKey}
     <br />Noise PublicKey:
-    {$hypnsNode.swarmNetworker.keyPair.publicKey.toString('hex')}
+    {$hypnsNode.swarmNetworker.keyPair.publicKey.toString("hex")}
     <br />Handshake:
     {handshake}
     <br />Swarm Connections:
     {connections}
   </div>
 {/if}
+
+<style>
+  .status {
+    font-size: smaller;
+    padding: 1em;
+    border: lightgreen 0.01em solid;
+    margin: 1em;
+  }
+</style>
