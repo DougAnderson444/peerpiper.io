@@ -19,26 +19,8 @@
   let log;
 
   const loadApp = async () => {
-    log += `we are `;
-    if (!assertValidPage(pageToSearch)) return;
-    log += `going to `;
     const page = `http://${pageToSearch}.${host}`;
-    log += `<br/>${page}`;
     await goto(page);
-  };
-
-  const assertValidPage = (pageToSearch) => {
-    if (
-      pageToSearch &&
-      pageToSearch.match(subdomainOk).length > 0 &&
-      pageToSearch.match(subdomainOk)[0] === pageToSearch
-    ) {
-      console.log({ pageToSearch });
-      return true;
-    }
-    errorMessage = "Invalid page. Try again!";
-    console.log(errorMessage);
-    return false;
   };
 
   const pageSearchInputHandler = (e) => {
