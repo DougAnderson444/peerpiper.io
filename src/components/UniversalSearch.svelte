@@ -16,7 +16,6 @@
   let subdomainOk = /^(?!.{64})(?:[a-z0-9](?:[a-z0-9-_]{0,61}[a-z0-9])?)+/;
   let pageToSearch = "";
   let searchState, errorMessage, pageExists;
-  let log;
 
   const loadApp = async () => {
     const page = `http://${pageToSearch}.${host}`;
@@ -55,7 +54,6 @@
     <br />
     <CreateButton on:click={loadApp} {searchState} />
   </span>
-  {@html log}
 </form>
 {#if errorMessage}
   <br />
