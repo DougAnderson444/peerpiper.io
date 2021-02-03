@@ -16,10 +16,15 @@
   let subdomainOk = /^(?!.{64})(?:[a-z0-9](?:[a-z0-9-_]{0,61}[a-z0-9])?)+/;
   let pageToSearch = "";
   let searchState, errorMessage, pageExists;
+  let log;
 
   const loadApp = async () => {
+    log += `we are `;
     if (!assertValidPage(pageToSearch)) return;
-    await goto(`http://${pageToSearch}.${host}`);
+    log += `going to `;
+    const page = `http://${pageToSearch}.${host}`;
+    log += `<br/>${page}`;
+    await goto(page);
   };
 
   const assertValidPage = (pageToSearch) => {
@@ -68,6 +73,7 @@
     <br />
     <CreateButton on:click={loadApp} {searchState} />
   </span>
+  {@html log}
 </form>
 {#if errorMessage}
   <br />
