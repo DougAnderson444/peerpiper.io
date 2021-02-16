@@ -1,19 +1,20 @@
 <script>
   import PGraphic from "../graphics/p.svelte";
   import UniversalSearch from "../UniversalSearch.svelte";
+  import Autocomplete from "../Autocomplete.svelte";
 </script>
 
 <div class="hero">
   <PGraphic />
   <h1 class="title">You've discovered PeerPiper.io</h1>
-  <h2>Control and conveniece from the comfort of your personal devices.</h2>
-  <p class="description">
-    We're designing your ultimate personal data sync. Save once, pipe updates to
-    your peers.
-  </p>
+  <h2>Conveniently control your data.</h2>
+  <br />
+  <p class="description">Save anything once, pipe updates to your peers.</p>
   <p class="description">🐉 This is still a "pre-alpha version" prototype 🐉</p>
   <br />
-  <UniversalSearch />
+  <div>
+    <Autocomplete />
+  </div>
 </div>
 
 <style>
