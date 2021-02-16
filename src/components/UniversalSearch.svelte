@@ -11,32 +11,55 @@
 
   const { page } = stores();
   export let host = $page.host;
-  console.log({ host });
 
   let subdomainOk = /^(?!.{64})(?:[a-z0-9](?:[a-z0-9-_]{0,61}[a-z0-9])?)+/;
-  let pageToSearch = "";
+  let search = "";
   let searchState, errorMessage, pageExists;
 
   const loadApp = async () => {
-    const page = `http://${pageToSearch}.${host}`;
+    const page = `http://${search}.${host}`;
     await goto(page);
   };
 
-  const pageSearchInputHandler = (e) => {
-    pageToSearch = pageToSearch.replace(
-      /[`~!@#$%^&*()|+=?;:'",.<>\{\}\[\]\\\/]/gi,
-      ""
-    );
+  async function postData(url = "", data = {}) {
+    const response = await fetch(url, {
+      method: "GET", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return await response.json(); // parses JSON response into native JavaScript objects
+  }
+
+  const searchInputHandler = async () => {
+    search = search.replace(/[`~!@#$%^&*()|+=?;:'",.<>\{\}\[\]\\\/]/gi, "");
+
     if (searchState) {
       searchState = "";
       pageExists = null;
     }
+
     errorMessage = "";
+
+    try {
+      const res = await fetch("/api/searchName", search);
+      if (res.ok) {
+        console.log("Response from super peer", { r });
+        return await res.json();
+      } else {
+        console.log("[FAIL] NOT searched from super peer");
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      console.log("[FAIL] NOT searched from super peer");
+      return false;
+    }
   };
 </script>
 
-<span>Load a Profile:</span>
-<br />
 <form class="form" on:submit|preventDefault={loadApp}>
   <span>
     <input
@@ -45,10 +68,10 @@
       placeholder="myNameOrHandle"
       required
       color="#9b51e0"
-      bind:value={pageToSearch}
-      on:change={pageSearchInputHandler}
-      on:keyup={pageSearchInputHandler}
-      on:keydown={pageSearchInputHandler}
+      bind:value={search}
+      on:change={searchInputHandler}
+      on:keyup={searchInputHandler}
+      on:keydown={searchInputHandler}
     />
     <span class="suffix" />
     <br />
