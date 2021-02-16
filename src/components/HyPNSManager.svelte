@@ -1,8 +1,6 @@
 <script>
   import { onMount } from "svelte";
 
-  import ObjectComp from "./ObjectComp.svelte";
-
   //stores
   import {
     hypnsNode, // bound to HyPNS component, will get its value from there
@@ -16,7 +14,6 @@
    * 3. An instance of the node (a keypair linked to the node)
    */
   let HyPNSComponent;
-  // let wsProxy = ["wss://hyperswarm.mauve.moe"]; // "wss://super.peerpiper.io:4977",
   let wsProxy = [
     "wss://super.peerpiper.io:49777",
     "wss://hyperswarm.mauve.moe",
@@ -35,13 +32,16 @@
     import(/* webpackChunkName: "hypns-comp" */ "hypns-svelte-component").then(
       (module) => {
         HyPNSComponent = module.default;
+        mounted = true;
       }
     );
-    mounted = true;
   });
 
   $: mounted && $hypnsNode ? open() : null;
-
+  /**
+   * 1. Everyone is a visitor first, needs a node to read from the swarm
+   * 2. If I'm the owner, I need the full keypair to have write access
+   */
   const open = async () => {
     // TODO: Fancier key manager
     // check for pre-existing keypair
