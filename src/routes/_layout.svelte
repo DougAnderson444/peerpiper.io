@@ -9,6 +9,7 @@
 
   let mounted;
   export let segment;
+  let IPFSenabled = false;
 
   onMount(async () => {
     let isDev = window.location.hostname.includes("localhost");
@@ -24,17 +25,6 @@
   });
 </script>
 
-<style>
-  main {
-    position: relative;
-    max-width: 56em;
-    background-color: white;
-    padding: 0 2em;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-</style>
-
 {#if mounted && !$subdomain}
   <Nav {segment} />
 {/if}
@@ -45,5 +35,16 @@
 
 {#if mounted && $subdomain}
   <HyPNSManager />
-  <IPFSManager />
+  <IPFSManager {IPFSenabled} />
 {/if}
+
+<style>
+  main {
+    position: relative;
+    max-width: 56em;
+    background-color: white;
+    padding: 0 2em;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+</style>
