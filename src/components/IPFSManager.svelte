@@ -3,19 +3,20 @@
     import { ipfsNode } from "../js/stores.js";
 
     let IPFS;
+    export let IPFSenabled = false;
     let mounted;
     let nodeId;
 
     onMount(async () => {
-        mounted = true;
         import(/* webpackChunkName: "ipfs-comp" */ "ipfs-core").then(
             (module) => {
                 IPFS = module.default;
+                mounted = true;
             }
         );
     });
 
-    $: mounted && IPFS ? open() : null;
+    $: mounted && IPFS && IPFSenabled ? open() : null;
 
     const open = async () => {
         $ipfsNode = await IPFS.create();
