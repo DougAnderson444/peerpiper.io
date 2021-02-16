@@ -91,7 +91,7 @@
                 return false;
             }
         } catch (error) {
-            console.log(erro);
+            console.log(error);
             console.log("[FAIL] NOT posted to super peer");
             return false;
         }
