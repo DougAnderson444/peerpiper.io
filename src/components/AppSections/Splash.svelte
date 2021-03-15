@@ -2,19 +2,24 @@
   import PGraphic from "../graphics/p.svelte";
   import UniversalSearch from "../UniversalSearch.svelte";
   import Autocomplete from "../Autocomplete.svelte";
+  import PeerStream from "../graphics/PeerStream.svelte";
+  import GetInvited from "../graphics/GetInvited.svelte";
 </script>
 
 <div class="hero">
   <PGraphic />
-  <h1 class="title">You've discovered PeerPiper.io</h1>
-  <h2>Conveniently control your data.</h2>
+  <h1 class="title">The easiest way to automatically stay in touch.</h1>
   <br />
-  <p class="description">Save anything once, pipe updates to your peers.</p>
+  <PeerStream />
+  <p class="description">
+    Save anything once, pipe updates to your peers from the privacy of your own
+    devices.
+  </p>
   <p class="description">🐉 This is still a "pre-alpha version" prototype 🐉</p>
-  <br />
-  <div>
+  <GetInvited />
+  <!-- <div>
     <Autocomplete />
-  </div>
+  </div> -->
 </div>
 
 <style>

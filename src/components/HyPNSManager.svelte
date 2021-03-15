@@ -6,6 +6,7 @@
     hypnsNode, // bound to HyPNS component, will get its value from there
     myInstance,
   } from "../js/stores.js";
+  import { subdomain } from "../js/stores.js";
 
   /**
    * Things needed to spin up a HyPNS ecosystem:
@@ -15,9 +16,11 @@
    */
   let HyPNSComponent;
   let wsProxy = [
+    `ws://${$subdomain}.localhost:4977`, // if being run on a local machine
     "wss://super.peerpiper.io:49777",
     "wss://hyperswarm.mauve.moe",
   ];
+  // Hypns node options
   let opts = {
     persist: true,
     swarmOpts: { announceLocalAddress: true, wsProxy },
@@ -47,8 +50,7 @@
     // check for pre-existing keypair
     const existing = localStorage.getItem("keypair") || null;
     let keypair = existing ? JSON.parse(existing) : null;
-    const opts = { keypair };
-    const loadingInstance = await $hypnsNode.open(opts); // open a new $myInstance
+    const loadingInstance = await $hypnsNode.open({ keypair }); // open a new $myInstance
     await loadingInstance.ready();
     $myInstance = loadingInstance;
     // store keypair for reload options
@@ -75,7 +77,8 @@
 {#if HyPNSComponent}
   <svelte:component this={HyPNSComponent} bind:hypnsNode={$hypnsNode} {opts} />
 {/if}
-{#if $myInstance}
+
+<!-- {#if $myInstance}
   <div class="status">
     HyPNS PublicKey
     {$myInstance.publicKey}
@@ -87,12 +90,12 @@
     {connections}
   </div>
 {/if}
-
+ -->
 <style>
-  .status {
+  /* .status {
     font-size: smaller;
     padding: 1em;
     border: lightgreen 0.01em solid;
     margin: 1em;
-  }
+  } */
 </style>

@@ -100,7 +100,9 @@
 
 <div>
     <br />
-    <QRCode value={$myInstance.publicKey} />
+    {#if $myInstance && $myInstance.publicKey}
+        <QRCode value={$myInstance.publicKey} />
+    {/if}
     <hr />
     <div>
         <form class="form" on:submit|preventDefault={handleUpdate}>

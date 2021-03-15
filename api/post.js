@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     const r = await response.json() // parses JSON response into native JavaScript objects
     res.status(200).json(r)
   } catch (error) {
-    console.error(error)
+    console.error('POST Error is: ', error)
     res.status(504).json({ error: 'No server' })
   }
 }
