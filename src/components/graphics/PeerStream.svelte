@@ -114,16 +114,16 @@
     </div>
     <div class="typewriter">
         <Typewriter loopRandom cascade interval={50}>
-            <h1>Latest Phone number</h1>
-            <h1>Best e-mail address</h1>
-            <h1>Latest Home Address</h1>
-            <h1>Wedding Gift List</h1>
-            <h1>Favorite Restaurants</h1>
-            <h1>Referral Links</h1>
-            <h1>Resume & References</h1>
-            <h1>Anything, really.</h1>
-            <h1>Anything, really.</h1>
-            <h1>Anything, really.</h1>
+            <h2>Latest Phone number</h2>
+            <h2>Best e-mail address</h2>
+            <h2>Latest Home Address</h2>
+            <h2>Wedding Gift List</h2>
+            <h2>Favorite Restaurants</h2>
+            <h2>Referral Links</h2>
+            <h2>Resume & References</h2>
+            <h2>Anything, really.</h2>
+            <h2>Anything, really.</h2>
+            <h2>Anything, really.</h2>
         </Typewriter>
     </div>
 </section>
@@ -241,7 +241,7 @@
     @media only screen and (max-width: 420px) {
         .seeding-anim {
             width: 300px;
-            margin: 15rem auto;
+            margin: 3rem auto;
         }
         .seeding-anim .stream {
             width: 150px;
