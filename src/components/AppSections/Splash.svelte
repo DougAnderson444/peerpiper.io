@@ -9,7 +9,8 @@
 <div class="hero">
   <PGraphic />
   <h1 class="title">The easiest way to automatically stay in touch.</h1>
-  <br />
+</div>
+<section>
   <PeerStream />
   <p class="description">
     Save anything once, pipe updates to your peers from the privacy of your own
@@ -17,19 +18,22 @@
   </p>
   <p class="description">🐉 This is still a "pre-alpha version" prototype 🐉</p>
   <GetInvited />
-  <!-- <div>
+</section>
+
+<!-- <div>
     <Autocomplete />
   </div> -->
-</div>
-
 <style>
   .hero {
-    margin: 3rem 1rem;
+    margin: 30px 0px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol";
     color: #525252;
     width: 100%;
+    text-align: center;
+  }
+  section {
     text-align: center;
   }
 
