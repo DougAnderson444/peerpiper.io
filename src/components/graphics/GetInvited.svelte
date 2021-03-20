@@ -52,7 +52,7 @@
             </div>
         </a>
         <div class="col">
-            <p>or</p>
+            <span>or</span>
         </div>
         <div class="col">
             <!-- Begin Mailchimp Signup Form -->
