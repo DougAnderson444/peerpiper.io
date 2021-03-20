@@ -117,10 +117,13 @@
             <h2>Latest Phone number</h2>
             <h2>Best e-mail address</h2>
             <h2>Latest Home Address</h2>
-            <h2>Wedding Gift List</h2>
-            <h2>Favorite Restaurants</h2>
+            <h2>Gift Wish List</h2>
             <h2>Referral Links</h2>
+            <h2>My Uber Rating</h2>
+            <h2>My AirBnB Rating</h2>
             <h2>Resume & References</h2>
+            <h2>Resume & References</h2>
+            <h2>Project status</h2>
             <h2>Anything, really.</h2>
             <h2>Anything, really.</h2>
             <h2>Anything, really.</h2>
@@ -142,9 +145,9 @@
     .seeding-anim .node {
         position: absolute;
         top: 0;
-        width: 25px;
-        height: 35px;
-        border-radius: 35%;
+        width: 26px;
+        height: 40px;
+        border-radius: 10px;
         background: #2ec73d;
         border: 4px solid #fff;
         z-index: 2;
