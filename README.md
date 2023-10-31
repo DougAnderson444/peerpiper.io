@@ -1,3 +1,7 @@
+# Archived
+
+This original version of PeerPiper is archived as the technology it used is now obsolete.
+
 # PeerPiper.io
 
 <p align="center">
